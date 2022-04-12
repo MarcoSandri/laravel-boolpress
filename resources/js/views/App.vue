@@ -1,16 +1,22 @@
 <template>
-  <div>
-      <ListaPost />
-  </div>
+    <div>
+        <Header/>
+        <Main/>
+        <Footer/>
+    </div>
 </template>
 
 <script>
-import ListaPost from '../components/ListaPost.vue'
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+import Main from '../components/Main.vue'
 
 export default {
     name: 'App',
     components: {
-        ListaPost
+        Main,
+        Footer,
+        Header
     }
 }
 </script>

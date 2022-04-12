@@ -18,7 +18,7 @@
 
 <script>
 
-import PostCard from './PostCard.vue';
+import PostCard from '../components/PostCard.vue';
 
 export default {
     name: 'ListaPost',
