@@ -3,7 +3,7 @@
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">{{content}}</p>
-            <a href="#" class="card-link">Vai a {{title }}</a>
+            <router-link class="card-link" :to="{name: 'singlePost', params: {slug: slug}}">Vai a {{title}}</router-link>
         </div>
     </div>
 </template>
@@ -13,7 +13,8 @@ export default {
     name: 'PostCard',
     props: {
         'title' : String,
-        'content' : String
+        'content' : String,
+        'slug' : String
     }
 }
 </script>

@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 import Home from "./pages/Home.vue";
 import ListaPost from "./pages/ListaPost.vue";
 import Faq from "./pages/Faq.vue";
+import SinglePost from "./pages/SinglePost.vue";
 
 const router = new VueRouter({
     mode: 'history',
@@ -18,15 +19,20 @@ const router = new VueRouter({
             component: Home
         },
         {
+            path: '/faq',
+            name: 'faq',
+            component: Faq
+        },
+        {
             path: '/posts',
             name: 'listaPost',
             component: ListaPost
         },
         {
-            path: '/faq',
-            name: 'faq',
-            component: Faq
-        },
+            path: '/posts/:slug',
+            name: 'singlePost',
+            component: SinglePost
+        }
     ]
 
 

@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Tutti i post</h1>
         <div class="postContainer">
-            <PostCard v-for="post in posts" :key="post.id" :title="post.title" :content="post.content"/>
+            <PostCard v-for="post in posts" :key="post.id" :title="post.title" :content="post.content" :slug="post.slug"/>
         </div>
 
         <div class="paginationContainer">
