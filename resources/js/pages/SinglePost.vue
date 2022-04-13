@@ -1,6 +1,7 @@
 <template>
   <div class="container">
       <h1>{{post.title}}</h1>
+      <h3>{{post.category.name}}</h3>
       <p>{{post.content}}</p>
   </div>
 </template>
@@ -10,7 +11,7 @@ export default {
     name: 'SinglePost',
     data() {
         return {
-            post : [],
+            post : null,
             slug : this.$route.params.slug
         }
     },
@@ -18,9 +19,13 @@ export default {
 
         getSinglePost() {
             axios.get(`/api/posts/${this.slug}`)
-                .then((response) =>{
-                    console.log(response.data.data);
-                    this.post = response.data.data;
+                .then((response) => { 
+                    if(!response.data.success) {
+                        this.$router.push({name: 'notFound'});
+                    } else {
+                        console.log(response.data.data);
+                        this.post = response.data.data;
+                    }
                 });
         }
     },
