@@ -13,12 +13,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() //solo l'index accessibile da front
+    public function index(Request $request) //solo l'index accessibile da front
     {
         //Prendo tutti i post e associo le categorie al codice riportato nel post
         $posts = Post::with(['category'])->get();
 
         $posts = Post::paginate(3);
+
+        $posts->each(function($post) {
+            if($post->cover) {
+                $post->cover = url('storage/'.$post->cover);
+            } else {
+                $post->cover = url('img/fallback_img.jpg');
+            }
+        });
 
         //Response crea una risposta
         //json ritorna un file json con i dati immessi
@@ -34,6 +42,12 @@ class PostController extends Controller
     {
 
         $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
+
+        if($post->cover) {
+            $post->cover = url('storage/' . $post->cover);
+        } else {
+            $post->cover = url('img/fallback_img.jpg');
+        }
 
         if ($post) {
             return response()->json(

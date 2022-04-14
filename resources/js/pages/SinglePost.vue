@@ -2,6 +2,7 @@
   <div class="container">
       <h1>{{post.title}}</h1>
       <h3>{{post.category.name}}</h3>
+      <img :src="post.cover" :alt="post.title">
       <p>{{post.content}}</p>
   </div>
 </template>

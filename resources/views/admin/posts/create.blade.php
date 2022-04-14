@@ -6,10 +6,15 @@
         <div class="col-md-12">
           <h1>Nuovo Post</h1>
 
-          <form method="POST" action="{{route('admin.posts.store')}}">
+          <form method="POST" action="{{route('admin.posts.store')}}" enctype="multipart/form-data">
 
             @csrf
-            
+
+            <div class="form-group">
+              <label for="image">Immagine di copertina</label>
+              <input class="form-control" type="file" name="image" id="image">
+            </div>
+
             <div class="form-group">
               <label for="title">Titolo</label>
               <input name="title" type="text" class="form-control" id="title" placeholder="Titolo" value="{{old('title')}}">

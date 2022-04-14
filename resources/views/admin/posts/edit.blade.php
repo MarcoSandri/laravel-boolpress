@@ -6,10 +6,15 @@
         <div class="col-md-12">
           <h1>Nuovo Post</h1>
 
-          <form method="POST" action="{{route('admin.posts.update', $post->id)}}">
+          <form method="POST" action="{{route('admin.posts.update', $post->id)}}" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
+
+            <div class="form-group">
+              <label for="image">Immagine di copertina</label>
+              <input class="form-control" type="file" name="image" id="image">
+            </div>
 
             <div class="form-group">
               <label for="title">Titolo</label>

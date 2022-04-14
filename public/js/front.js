@@ -1989,12 +1989,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: {
     'title': String,
     'content': String,
-    'slug': String
+    'slug': String,
+    'image': String
   }
 });
 
@@ -2133,6 +2135,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3614,6 +3617,11 @@ var render = function () {
         "div",
         { staticClass: "card-body" },
         [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: _vm.image, alt: "Card image cap" },
+          }),
+          _vm._v(" "),
           _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.content))]),
@@ -3725,7 +3733,12 @@ var render = function () {
       _vm._l(_vm.posts, function (post) {
         return _c("PostCard", {
           key: post.id,
-          attrs: { title: post.title, content: post.content, slug: post.slug },
+          attrs: {
+            title: post.title,
+            content: post.content,
+            slug: post.slug,
+            image: post.cover,
+          },
         })
       }),
       1
@@ -3843,6 +3856,8 @@ var render = function () {
     _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
     _vm._v(" "),
     _c("h3", [_vm._v(_vm._s(_vm.post.category.name))]),
+    _vm._v(" "),
+    _c("img", { attrs: { src: _vm.post.cover, alt: _vm.post.title } }),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.post.content))]),
   ])
