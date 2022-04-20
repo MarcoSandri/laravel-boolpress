@@ -9,6 +9,7 @@ import ListaPost from "./pages/ListaPost.vue";
 import Faq from "./pages/Faq.vue";
 import SinglePost from "./pages/SinglePost.vue";
 import NotFound from "./pages/NotFound.vue";
+import Contattaci from "./pages/Contattaci.vue";
 
 const router = new VueRouter({
     mode: 'history',
@@ -23,6 +24,11 @@ const router = new VueRouter({
             path: '/faq',
             name: 'faq',
             component: Faq
+        },
+        {
+            path: '/contattaci',
+            name: 'contattaci',
+            component: Contattaci
         },
         {
             path: '/posts',

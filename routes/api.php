@@ -20,3 +20,5 @@ Route::get('/posts', 'Api\PostController@index');
  
 //Api per show
 Route::get('/posts/{slug}', 'Api\PostController@show');
+
+Route::post('/contacts', 'Api\ContactController@store');

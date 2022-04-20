@@ -10,6 +10,9 @@
             <li class="nav-item">
                 <router-link class="nav-link active" :to="{name: 'faq'}">FAQ</router-link>
             </li>
+            <li class="nav-item">
+                <router-link class="nav-link active" :to="{name: 'contattaci'}">Contattaci</router-link>
+            </li>
         </ul>
     </header>
 </template>
