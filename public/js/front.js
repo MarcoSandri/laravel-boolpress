@@ -2047,23 +2047,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Contattaci',
   data: function data() {
     return {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      sending: false,
+      errors: {},
+      success: false
     };
   },
   methods: {
     sendForm: function sendForm() {
+      var _this = this;
+
+      this.sending = true;
       axios.post('/api/contacts', {
         'name': this.name,
         'email': this.email,
         'message': this.message
       }).then(function (response) {
         console.log(response);
+        _this.sending = false;
+
+        if (!response.data.success) {
+          _this.errors = response.data.errors;
+        } else {
+          _this.name = '';
+          _this.email = '';
+          _this.message = '';
+          _this.errors = {};
+        }
+
+        _this.success = response.data.success;
       });
     }
   }
@@ -3761,6 +3789,37 @@ var render = function () {
         },
       },
       [
+        _vm.success
+          ? _c(
+              "div",
+              { staticClass: "alert alert-success", attrs: { role: "alert" } },
+              [
+                _vm._v("\n            Email inviata! "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "alert-link",
+                    attrs: { to: { name: "home" } },
+                  },
+                  [_vm._v("Torna alla home")]
+                ),
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._l(_vm.errors, function (error, index) {
+          return _c(
+            "div",
+            {
+              key: index,
+              staticClass: "alert alert-warning",
+              attrs: { role: "alert" },
+            },
+            [_vm._v("\n            " + _vm._s(error[0]) + "\n        ")]
+          )
+        }),
+        _vm._v(" "),
         _c("div", { staticClass: "input-group mb-3" }, [
           _vm._m(0),
           _vm._v(" "),
@@ -3858,9 +3917,10 @@ var render = function () {
         _c(
           "button",
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Invia")]
+          [_vm._v(_vm._s(_vm.sending ? "Invio in corso" : "Invia"))]
         ),
-      ]
+      ],
+      2
     ),
   ])
 }
